@@ -14,12 +14,11 @@ export default function Home() {
 
       {/* 頂部大圖：高度在手機上設為 300px，電腦才設為 700px */}
       <div className="w-full h-[300px] md:h-[700px] overflow-hidden">
-        <img 
-          src="bg1.png" 
-          alt="bg1" 
-          className="w-full h-full object-cover"
-        />
-      </div>
+  <img 
+    src="bg1.png" 
+    style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+  />
+</div>
     </main>
   );
 }
