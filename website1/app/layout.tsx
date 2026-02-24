@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Link from "next/link";
 import { Inter } from "next/font/google";
-
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import FloatingMenu from "./FloatingMenu";
 const inter = Inter({ subsets: ["latin"] });
 
@@ -92,11 +92,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </div>
             <div style={{ textAlign: 'left' }}>
               <p style={{ margin: '0 0 5px 0' }}>公司總部-新北市汐止區新台五路一段93號9樓之9</p>
-              <p style={{ margin: '0 0 5px 0' }}>公司電話-02-26972697#260</p>
+              <p style={{ margin: '0 0 5px 0' }}>公司電話-02-26972697#260  </p>
             </div>
           </div>
         </footer>
         <FloatingMenu />
+        <SpeedInsights />
       </body>
     </html>
   );
