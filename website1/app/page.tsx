@@ -1,19 +1,19 @@
 export default function Home() {
   return (
     <main>
-      {/* 導覽列：手機時直排 (col)，電腦時橫排 (row) */}
-      <nav className="flex flex-col md:flex-row items-center justify-between p-4 bg-white">
-        
-      </nav>
+      {/* 只有在手機版顯示的區塊 (md 以上就隱藏) */}
+      <div className="block md:hidden bg-blue-100 p-4">
+        <h1>這是專屬手機版的標題</h1>
+        <img src="/mobile-hero.png" alt="mobile" className="w-full" />
+      </div>
 
-      {/* 頂部大圖：高度在手機上設為 300px，電腦才設為 700px */}
-      <div className="w-full h-[300px] md:h-[700px] overflow-hidden">
-  <img 
-    src="bg1.png" 
-    alt="bg1" 
-    style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
-  />
-</div>
+      {/* 只有在電腦版顯示的區塊 (預設隱藏，md 以上才變 flex 或 block) */}
+      <div className="hidden md:block bg-green-100 p-10">
+        <h1>這是專屬電腦版的超大橫幅</h1>
+        <div className="h-[700px]">
+           <img src="/desktop-bg.png" className="w-full h-full object-cover" />
+        </div>
+      </div>
     </main>
   );
 }
