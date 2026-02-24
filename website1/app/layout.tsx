@@ -20,31 +20,33 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   display: 'flex', 
   alignItems: 'center', 
   justifyContent: 'space-between', 
-  flexWrap: 'wrap', 
-  padding: '20px 5%', // 使用百分比 padding，螢幕越寬左右留白越多
+  flexWrap: 'nowrap', // 在電腦版強制不換行，避免 Logo 跟選單分兩層
+  padding: '20px 5%', 
   width: '100%',
-  boxSizing: 'border-box'
+  maxWidth: '1400px', // 限制最大寬度，避免在超大螢幕散太開
+  margin: '0 auto', // 居中對齊
+  boxSizing: 'border-box',
+  gap: '20px'
 }}>
-          {/* Logo 區塊 - 在手機上會縮小一點 */}
-          <Link href="/" style={{ textDecoration: 'none', color: 'inherit', display: 'flex', alignItems: 'center', flexShrink: 0 }}>
+  {/* Logo 區塊 - 固定寬度，不讓它被壓縮 */}
+  <Link href="/" style={{ textDecoration: 'none', color: 'inherit', display: 'flex', alignItems: 'center', flexShrink: 0 }}>
     <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
-      <img src="/99.png" alt="Logo" style={{ width: 'clamp(80px, 10vw, 110px)', height: 'auto' }} />
+      <img src="/99.png" alt="Logo" style={{ width: '110px', height: 'auto' }} />
       <span style={{ 
         fontWeight: 'bold', 
-        fontSize: 'clamp(28px, 4vw, 42px)', // 電腦版字體會變大
+        fontSize: '40px', // 電腦版固定大尺寸
         whiteSpace: 'nowrap'
       }}>腸健檢</span>
     </div>
   </Link>
 
-          {/* 導覽列 - 加入 flex-wrap 並優化手機間距 */}
-          <nav style={{ 
+  {/* 導覽列 - 佔滿剩餘空間並靠右 */}
+  <nav style={{ 
     display: 'flex', 
-    justifyContent: 'flex-end', // 電腦版靠右
-    flexWrap: 'wrap', 
+    justifyContent: 'flex-end', 
+    alignItems: 'center',
     gap: '12px', 
-    flex: 1,
-    minWidth: '320px' 
+    flex: 1, // 佔滿中間空間，把按鈕推向最右邊
   }}>
     {["關於我們", "產品", "常見問題", "教學影片", "醫師團隊", "合作廠商", "集團介紹"].map((text) => (
       <button key={text} style={navButtonStyle}>{text}</button>
