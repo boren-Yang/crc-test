@@ -16,11 +16,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         margin: 0 
       }}>
         <header style={{ 
-          display: 'flex', 
-          alignItems: 'center', 
-          padding: '1rem',
-          borderBottom: '1px solid #eee' 
-        }}>
+  display: 'flex', 
+  alignItems: 'center', 
+  justifyContent: 'center', 
+  flexWrap: 'wrap', // 重要：讓按鈕在空間不足時自動掉到下一行
+  padding: '10px' 
+}}>
           {/* Logo 區塊 */}
           <Link href="/" style={{ textDecoration: 'none', color: 'inherit', display: 'flex', alignItems: 'center' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
