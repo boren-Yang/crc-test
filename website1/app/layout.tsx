@@ -16,40 +16,43 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         margin: 0,
         overflowX: 'hidden' // 避免手機版左右滑動
       }}>
-        <header style={{ 
-  display: 'flex', 
-  alignItems: 'center', 
-  justifyContent: 'space-between', 
-  flexWrap: 'nowrap', // 在電腦版強制不換行，避免 Logo 跟選單分兩層
-  padding: '20px 5%', 
-  width: '100%',
-  maxWidth: '1400px', // 限制最大寬度，避免在超大螢幕散太開
-  margin: '0 auto', // 居中對齊
-  boxSizing: 'border-box',
-  gap: '20px'
-}}>
-  {/* Logo 區塊 - 固定寬度，不讓它被壓縮 */}
+        <header 
+  className="flex flex-col md:flex-row items-center justify-between" 
+  style={{ 
+    padding: '20px 5%', 
+    width: '100%',
+    maxWidth: '1400px', 
+    margin: '0 auto', 
+    boxSizing: 'border-box',
+    gap: '20px'
+  }}
+>
+  {/* Logo 區塊 - 在手機上縮小字體，電腦上恢復大尺寸 */}
   <Link href="/" style={{ textDecoration: 'none', color: 'inherit', display: 'flex', alignItems: 'center', flexShrink: 0 }}>
     <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
-      <img src="/99.png" alt="Logo" style={{ width: '110px', height: 'auto' }} />
-      <span style={{ 
-        fontWeight: 'bold', 
-        fontSize: '40px', // 電腦版固定大尺寸
-        whiteSpace: 'nowrap'
-      }}>腸健檢</span>
+      <img src="/99.png" alt="Logo" className="w-[80px] md:w-[110px]" style={{ height: 'auto' }} />
+      <span className="text-[28px] md:text-[40px] font-bold whitespace-nowrap">
+        腸健檢
+      </span>
     </div>
   </Link>
 
-  {/* 導覽列 - 佔滿剩餘空間並靠右 */}
-  <nav style={{ 
-    display: 'flex', 
-    justifyContent: 'flex-end', 
-    alignItems: 'center',
-    gap: '12px', 
-    flex: 1, // 佔滿中間空間，把按鈕推向最右邊
-  }}>
+  {/* 導覽列 - 手機版自動換行居中 (flex-wrap)，電腦版靠右 (md:justify-end) */}
+  <nav 
+    className="flex flex-wrap justify-center md:justify-end items-center"
+    style={{ 
+      gap: '12px', 
+      flex: 1,
+    }}
+  >
     {["關於我們", "產品", "常見問題", "教學影片", "醫師團隊", "合作廠商", "集團介紹"].map((text) => (
-      <button key={text} style={navButtonStyle}>{text}</button>
+      <button 
+        key={text} 
+        className="px-3 py-2 md:px-5 md:py-2 text-[14px] md:text-[16px]"
+        style={navButtonStyle}
+      >
+        {text}
+      </button>
     ))}
   </nav>
 </header>
@@ -92,15 +95,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
 // 修改按鈕樣式：讓字體和間距能自動縮放
 const navButtonStyle = {
-  padding: '10px 22px', // 增加內距讓按鈕看起來更飽滿
+  // padding 和 fontSize 改到上面的 className 處理了
   backgroundColor: '#EF7E00',
   color: 'white',
   border: 'none',
   borderRadius: '25px',
   cursor: 'pointer',
-  fontSize: '16px', // 在電腦版固定 16px 比較精緻
   fontWeight: 'bold' as const,
   whiteSpace: 'nowrap' as const,
   transition: '0.3s',
-  boxShadow: '0 2px 4px rgba(0,0,0,0.1)' // 加一點點陰影增加質感
+  boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
 };
