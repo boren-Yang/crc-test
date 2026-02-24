@@ -10,6 +10,7 @@ export default function Home() {
       <div className="w-full h-[300px] md:h-[700px] overflow-hidden">
   <img 
     src="bg1.png" 
+    alt="bg1" 
     style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
   />
 </div>

@@ -16,45 +16,27 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         margin: 0,
         overflowX: 'hidden' // 避免手機版左右滑動
       }}>
-        <header 
-  className="flex flex-col md:flex-row items-center justify-between" 
-  style={{ 
-    padding: '20px 5%', 
-    width: '100%',
-    maxWidth: '1400px', 
-    margin: '0 auto', 
-    boxSizing: 'border-box',
-    gap: '20px'
-  }}
->
-  {/* Logo 區塊 - 在手機上縮小字體，電腦上恢復大尺寸 */}
-  <Link href="/" style={{ textDecoration: 'none', color: 'inherit', display: 'flex', alignItems: 'center', flexShrink: 0 }}>
-    <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
-      <img src="/99.png" alt="Logo" className="w-[80px] md:w-[110px]" style={{ height: 'auto' }} />
-      <span className="text-[28px] md:text-[40px] font-bold whitespace-nowrap">
-        腸健檢
-      </span>
-    </div>
+      <header className="flex flex-col md:flex-row items-center justify-between p-4 md:px-[5%] max-w-[1400px] mx-auto w-full gap-4">
+  
+  {/* Logo 區塊：手機縮小，電腦恢復大字 */}
+  <Link href="/" className="flex items-center gap-3 no-underline text-inherit flex-shrink-0">
+    <img src="/99.png" alt="Logo" className="w-[80px] md:w-[110px]" />
+    <span className="font-bold text-[28px] md:text-[40px] whitespace-nowrap">腸健檢</span>
   </Link>
 
-  {/* 導覽列 - 手機版自動換行居中 (flex-wrap)，電腦版靠右 (md:justify-end) */}
-  <nav 
-    className="flex flex-wrap justify-center md:justify-end items-center"
-    style={{ 
-      gap: '12px', 
-      flex: 1,
-    }}
-  >
+  {/* 導覽列：手機置中換行，電腦靠右 (md:justify-end) */}
+  <nav className="flex flex-wrap justify-center md:justify-end items-center gap-2 md:gap-3 flex-1">
     {["關於我們", "產品", "常見問題", "教學影片", "醫師團隊", "合作廠商", "集團介紹"].map((text) => (
       <button 
         key={text} 
-        className="px-3 py-2 md:px-5 md:py-2 text-[14px] md:text-[16px]"
-        style={navButtonStyle}
+        style={navButtonStyle} 
+        className="text-[12px] md:text-[16px] px-3 py-1 md:px-5 md:py-2"
       >
         {text}
       </button>
     ))}
   </nav>
+
 </header>
 
         <main style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
