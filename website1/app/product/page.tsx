@@ -1,147 +1,100 @@
 export default function ProductPage() {
   return (
-    <div style={{ 
-      display: 'flex',
-      flexDirection: 'column',
-      width: '100%'
-    }}>
+    <div className="w-full flex flex-col">
+      
       {/* ========================================= */}
-      {/* 區塊 2：癌症數據 (修改：左文 / 右圖)      */}
+      {/* 區塊 1：癌症數據 (左文 / 右圖)              */}
       {/* ========================================= */}
-      <div style={{ 
-        display: 'flex',
-        justifyContent: 'center',
-        padding: '80px 20px',        // 這裡高度加大，更有氣勢
-        backgroundColor: '#F5F7FA'   // ★ 關鍵：加上淺灰藍色背景，區分段落
-      }}>
-        <div style={{ 
-          display: 'flex',           
-          justifyContent: 'center',  
-          alignItems: 'center',      
-          gap: '60px',               
-          maxWidth: '1100px',        
-          width: '100%',
-          flexDirection: 'row-reverse' // ★ 魔法指令：讓原本的左圖右文，變成「左文右圖」
-        }}>
+      <div className="w-full bg-[#F5F7FA] py-12 md:py-20 px-5 flex justify-center">
+        {/* 核心佈局： 
+          手機版：flex-col (上下疊，圖上文下)
+          電腦版：md:flex-row-reverse (左右排，左文右圖)
+        */}
+        <div className="w-full max-w-[1100px] flex flex-col md:flex-row-reverse items-center gap-10 md:gap-16">
           
-          {/* 圖片區塊 (因為 row-reverse，它會跑到右邊) */}
-          <div style={{ width: '50%', minWidth: '300px' }}> 
+          {/* 圖片區塊 */}
+          <div className="w-full md:w-1/2 min-w-[300px]"> 
             <img 
               src="prod.png"  // ★ 請記得換成你的癌症數據圖檔名
               alt="大腸癌數據分析" 
-              style={{ 
-                width: '100%', 
-                height: 'auto', 
-                display: 'block',
-                borderRadius: '12px',
-                boxShadow: '0 4px 20px rgba(0,0,0,0.08)' // 加上柔和陰影
-              }} 
+              className="w-full h-auto block rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.08)]"
             />
           </div>
 
-          {/* 文案區塊 (因為 row-reverse，它會跑到左邊) */}
-          <div style={{ flex: 1 }}> 
-            <h2 style={{ 
-              fontSize: '32px', 
-              fontWeight: 'bold', 
-              marginBottom: '24px',
-              color: '#EF7E00', // 或是用參考圖的深橘色
-              lineHeight: '1.4'
-            }}>
-              面對榜首大腸癌，<br/>我們不是無能為力！
+          {/* 文案區塊 */}
+          <div className="flex-1 w-full text-center md:text-left"> 
+            <h2 className="text-[28px] md:text-[32px] font-bold text-[#EF7E00] leading-snug mb-6">
+              面對榜首大腸癌，<br className="hidden md:block" />我們不是無能為力！
             </h2>
             
-            <p style={{ lineHeight: '1.9', color: '#444', fontSize: '16px', marginBottom: '20px' }}>
+            <p className="leading-[1.9] text-[#444] text-[15px] md:text-[16px] mb-5 text-justify md:text-left">
               當大腸癌成為男性第 1、女性第 2 的高發癌症時，我們不能再抱持著「不會是我」的僥倖心態。
               這張圖表揭示了近 2 萬人的真實遭遇，且數字仍居高不下。
             </p>
-            <p style={{ lineHeight: '1.9', color: '#444', fontSize: '16px' }}>
+            <p className="leading-[1.9] text-[#444] text-[15px] md:text-[16px] text-justify md:text-left">
               然而，這也是唯一能透過「非侵入性檢測」就能早期發現風險的癌症。
               不需要等到症狀出現，也不需要忍受痛苦的檢查，現在透過簡單的居家篩檢，就能掌握腸道狀況。
             </p>
 
-            <button style={{
-              marginTop: '30px',
-              padding: '12px 35px',
-              backgroundColor: '#182A5B', // 深藍色按鈕
-              color: 'white',
-              border: 'none',
-              borderRadius: '30px',
-              cursor: 'pointer',
-              fontSize: '16px',
-              fontWeight: 'bold',
-              boxShadow: '0 4px 10px rgba(24, 42, 91, 0.3)'
-            }}>
-              立即預約檢測(可裝line)
+            {/* 升級版按鈕：加入 hover 和 active 的 Q 彈動畫 */}
+            <button className="
+              mt-8 px-8 py-3 bg-[#182A5B] text-white font-bold text-[16px] rounded-full 
+              shadow-[0_4px_10px_rgba(24,42,91,0.3)]
+              transition-all duration-300 ease-in-out
+              hover:bg-[#203878] hover:scale-105 hover:shadow-lg
+              active:scale-95
+            ">
+              立即預約檢測 (可裝LINE)
             </button>
           </div>
 
         </div>
       </div>
+
       {/* ========================================= */}
-      {/* 區塊 1：檢測流程 (維持：左圖 / 右文)      */}
+      {/* 區塊 2：檢測流程 (左圖 / 右文)              */}
       {/* ========================================= */}
-      <div style={{ 
-        display: 'flex',
-        justifyContent: 'center',
-        padding: '60px 20px', // 上下間距加大一點，更有呼吸感
-        backgroundColor: '#FFFFFF' // 白色背景
-      }}>
-        <div style={{ 
-          display: 'flex',           
-          justifyContent: 'center',  
-          alignItems: 'center',      
-          gap: '60px',               
-          maxWidth: '1100px',        
-          width: '100%',
-          // 這裡不需要 marginLeft，讓它自然置中比較好看，或者你若堅持要偏右可保留
-        }}>
+      <div className="w-full bg-white py-12 md:py-20 px-5 flex justify-center">
+        {/* 核心佈局： 
+          手機版：flex-col (上下疊，圖上文下)
+          電腦版：md:flex-row (左右排，左圖右文)
+        */}
+        <div className="w-full max-w-[1100px] flex flex-col md:flex-row items-center gap-10 md:gap-16">
+          
           {/* 左：圖片 */}
-          <div style={{ width: '45%', minWidth: '300px' }}> 
+          <div className="w-full md:w-[45%] min-w-[300px]"> 
             <img 
               src="/prod1.png" 
               alt="檢測流程" 
-              style={{ 
-                width: '100%', 
-                height: 'auto', 
-                display: 'block', 
-                // 加一點陰影讓圖片浮起來，更有質感
-                filter: 'drop-shadow(0 10px 15px rgba(0,0,0,0.1))' 
-              }} 
+              className="w-full h-auto block drop-shadow-xl" 
             />
           </div>
+
           {/* 右：文案 */}
-          <div style={{ flex: 1 }}> 
-            <h1 style={{ fontSize: '36px', fontWeight: 'bold', marginBottom: '24px', color: '#EF7E00' }}>
+          <div className="flex-1 w-full text-center md:text-left"> 
+            <h1 className="text-[28px] md:text-[36px] font-bold text-[#EF7E00] mb-4 md:mb-6">
               腸健檢 - 居家腸道健康檢測
             </h1>
-            <h3 style={{ fontSize: '20px', color: '#333', marginBottom: '16px', fontWeight: '600' }}>
+            <h3 className="text-[18px] md:text-[20px] font-semibold text-[#333] mb-4">
               簡單四步驟，在家就能做
             </h3>
-            <p style={{ lineHeight: '1.8', color: '#555', fontSize: '16px' }}>
-              1. <strong>居家採集：</strong> 輕鬆在家完成糞便檢體採集。<br/>
-              2. <strong>快遞收件：</strong> 專人收件運送，確保檢體品質。<br/>
-              3. <strong>實驗檢測：</strong> 實驗室進行高階萃取與分析。<br/>
-              4. <strong>報告產出：</strong> 線上隨時查看您的健康評估報告。
-            </p>
+            
+            {/* 為了讓條列式在手機版置中時也好看，這裡包了一層 div 讓文字靠左 */}
+            <div className="inline-block text-left text-[#555] text-[15px] md:text-[16px] leading-[1.8]">
+              <p>1. <strong>居家採集：</strong> 輕鬆在家完成糞便檢體採集。</p>
+              <p>2. <strong>快遞收件：</strong> 專人收件運送，確保檢體品質。</p>
+              <p>3. <strong>實驗檢測：</strong> 實驗室進行高階萃取與分析。</p>
+              <p>4. <strong>報告產出：</strong> 線上隨時查看您的健康評估報告。</p>
+            </div>
           </div>
+
         </div>
       </div>
 
-      
-
       {/* ========================================= */}
-      {/* 底部藍色裝飾條                            */}
+      {/* 底部藍色裝飾條                              */}
       {/* ========================================= */}
-      <div style={{ 
-        width: '100%',
-        padding: '20px 0',
-        backgroundColor: '#182A5B',
-        textAlign: 'center',
-        color: 'white',
-        fontSize: '16px',
-        letterSpacing: '1px'
-      }}>
+      <div className="w-full py-5 bg-[#182A5B] text-white text-center text-[14px] md:text-[16px] tracking-wide px-4">
         持續關注與守護您的腸道健康，祝福您迎向更健康的未來。
       </div>
 

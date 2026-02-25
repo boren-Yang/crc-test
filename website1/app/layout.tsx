@@ -5,7 +5,15 @@ import { Inter } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import FloatingMenu from "./FloatingMenu";
 const inter = Inter({ subsets: ["latin"] });
-
+const navLinks = [
+  { name: "關於我們", href: "/about" },        // 內部網頁
+  { name: "產品", href: "/product" },          // 內部網頁
+  { name: "常見問題", href: "/qa" },            // 內部網頁
+  { name: "教學影片", href: "/video" },         // 內部網頁
+  { name: "醫師團隊", href: "/doctor" },        // 內部網頁
+  { name: "合作廠商", href: "/partner" },       // 內部網頁
+  { name: "集團介紹", href: "https://www.toolsbiotech.com/index.php" } // 外部網站範例 (請換成真實網址)
+];
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="zh-TW">
@@ -26,21 +34,37 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   {/* 導覽列：手機置中換行，電腦靠右 (md:justify-end) */}
   <nav className="flex flex-wrap justify-center md:justify-end items-center gap-2 md:gap-4 flex-1">
-  {["關於我們", "產品", "常見問題", "教學影片", "醫師團隊", "合作廠商", "集團介紹"].map((text) => (
-    <button 
-      key={text} 
-      className="
-        bg-[#EF7E00] text-white font-bold whitespace-nowrap transition-all duration-300 shadow-sm
-        /* 手機版樣式 */
-        text-[12px] px-3 py-1.5 rounded-[15px]
-        /* 電腦版樣式 (md 以上) */
-        md:text-[16px] md:px-6 md:py-2.5 md:rounded-[25px] 
-        hover:bg-[#d67100] hover:scale-105
-      "
-    >
-      {text}
-    </button>
-  ))}
+  {navLinks.map((link) => {
+    // 判斷是否為外部網址（只要是 http 開頭的就算是外部網址）
+    const isExternal = link.href.startsWith("http");
+
+    return (
+      <Link 
+        key={link.name} 
+        href={link.href}
+        // 如果是外部網站，就開啟新分頁 (target="_blank")，並加上安全性屬性
+        target={isExternal ? "_blank" : "_self"}
+        rel={isExternal ? "noopener noreferrer" : ""}
+        className="
+          /* 1. 基礎樣式與過渡動畫 (加入 inline-block 確保 a 標籤排版正常) */
+          inline-block bg-[#EF7E00] text-white font-bold whitespace-nowrap shadow-sm no-underline text-center
+          transition-all duration-300 ease-in-out
+          
+          /* 2. 手機版尺寸 (預設) */
+          text-[12px] px-3 py-1.5 rounded-[15px]
+          
+          /* 3. 電腦版尺寸 (螢幕大於 768px 時觸發) */
+          md:text-[16px] md:px-6 md:py-2.5 md:rounded-[25px] 
+          
+          /* 4. 終極互動效果 */
+          hover:bg-[#d67100] hover:scale-105 hover:shadow-lg hover:shadow-[#EF7E00]/50
+          active:scale-95
+        "
+      >
+        {link.name}
+      </Link>
+    );
+  })}
 </nav>
 
 </header>
@@ -68,16 +92,3 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   );
 }
 
-// 修改按鈕樣式：讓字體和間距能自動縮放
-const navButtonStyle = {
-  // padding 和 fontSize 改到上面的 className 處理了
-  backgroundColor: '#EF7E00',
-  color: 'white',
-  border: 'none',
-  borderRadius: '25px',
-  cursor: 'pointer',
-  fontWeight: 'bold' as const,
-  whiteSpace: 'nowrap' as const,
-  transition: '0.3s',
-  boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
-};
