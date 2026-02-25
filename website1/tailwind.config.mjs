@@ -1,12 +1,11 @@
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
   content: [
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    // 如果你有其他存放元件的資料夾，也要加在這裡
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx,vue,html}", // 確保路徑覆蓋了你的檔案
   ],
   theme: {
     extend: {},
   },
   plugins: [],
-};
+}
