@@ -3,6 +3,7 @@ import "./globals.css";
 import Link from "next/link";
 import { Inter } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
 import FloatingMenu from "./FloatingMenu";
 const inter = Inter({ subsets: ["latin"] });
 const navLinks = [
@@ -87,6 +88,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 </footer>
         <FloatingMenu />
         <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );
