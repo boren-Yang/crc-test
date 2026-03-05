@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Inter } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import FloatingMenu from "./FloatingMenu";
+import { Analytics } from "@vercel/analytics/next";
 const inter = Inter({ subsets: ["latin"] });
 const navLinks = [
   { name: "關於我們", href: "/about" },        // 內部網頁
@@ -24,8 +25,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         margin: 0,
         overflowX: 'hidden' // 避免手機版左右滑動
       }}>
+      <Analytics />
       <header className="flex flex-col md:flex-row items-center justify-between p-4 md:px-[5%] max-w-[1400px] mx-auto w-full gap-4">
-  
+      
   {/* Logo 區塊：手機縮小，電腦恢復大字 */}
   <Link href="/" className="flex items-center gap-3 no-underline text-inherit flex-shrink-0">
     <img src="/99.png" alt="Logo" className="w-[80px] md:w-[110px]" />
