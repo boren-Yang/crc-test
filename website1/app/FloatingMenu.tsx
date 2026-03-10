@@ -55,7 +55,7 @@ export default function FloatingMenu() {
       zIndex: 9999        // 確保浮在所有內容最上層，不會被蓋住
     }}>
       {/* 1. 填寫表單 / 預約按鈕 (假設連到 /contact) */}
-      <Link href="https://www.surveycake.com/s/npXMl" style={btnStyle}>
+      <Link href="https://www.surveycake.com/s/npXMl" target="_blank" rel="noopener noreferrer" style={btnStyle}>
         預約
       </Link>
 

@@ -44,7 +44,7 @@ export default function ProductPage() {
               hover:bg-[#203878] hover:scale-105 hover:shadow-lg
               active:scale-95
             ">
-              立即預約檢測 (可裝LINE)
+              立即預約檢測 
             </button>
           </div>
 
