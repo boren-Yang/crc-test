@@ -79,7 +79,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <footer className="bg-[#CCCCCC] text-white p-5 w-full">
   <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between items-center gap-5 text-center md:text-left">
     <p className="font-bold m-0 text-[12px] md:text-[14px]">
-      圖爾斯生物科技股份有限公司 © 2021 BIOTOOLS Co., Ltd.
+      圖爾思生物科技股份有限公司 © 2021 BIOTOOLS Co., Ltd.
     </p>
     <div className="text-[12px] md:text-[14px]">
       <p className="m-0">公司總部-新北市汐止區新台五路一段93號9樓之9</p>
